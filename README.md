@@ -40,4 +40,3 @@ Once the JSON file has been exported to the `monsters` folder, you can then impo
 
 ## Known Limitations
 * Multi-section monsters will import as separate stat blocks, one for each body part. This is a limitation of Jean's system, and cannot be fixed by me. If you wish to have multiple HP and MP bars for a single token, I recommend using [Bar Brawl](https://foundryvtt.com/packages/barbrawl).
-* Fortitude and Willpower saves do not correctly add themselves to the sheet. I am working on fixing this.
