@@ -95,6 +95,14 @@ function convertData(inputData) {
     statusEntries[`status${sectionCount}Style`] = style.style;
   });
 
+  const formattedSkills = monster.uniqueskills.map(skill => {
+    return skill.abilities.map(ability => {
+      const title = he.decode(ability.title).trim();
+      const description = he.decode(ability.description).trim().replace(/<\/?p>/g, '');
+      return `<p><strong>${title}</strong></p><p>${description}</p>`;
+    }).join('');
+  }).join('<br><br>');
+
   const outputData = {
     description: monster.description,
     disposition: monster.disposition,
@@ -104,6 +112,9 @@ function convertData(inputData) {
     language: monster.language,
     lootsNum: monster.loottable.length,
     monsterName: monster.monstername,
+    mndResist: monster.willpower,
+    vitResist: monster.fortitude,
+    lv: monster.level,
     mobility: monster.movementspeed,
     mode: "save",
     paletteInsertType: "exchange",
@@ -120,7 +131,7 @@ function convertData(inputData) {
     sheetDescriptionM: `分類:${monster.monstertype}　知能:${monster.intelligence}　知覚:${monster.perception}　反応:${monster.disposition}\n言語:${monster.language}　生息地:${monster.habitat}\n弱点:${monster.weakpoint}\n先制値:${monster.initiative}　生命抵抗力:${monster.fortitude}（${parseInt(monster.fortitude) + 7}）　精神抵抗力:${monster.willpower}（${parseInt(monster.willpower) + 7}）`,
     sheetDescriptionS: `分類:${monster.monstertype}\n弱点:${monster.weakpoint}\n先制値:${monster.initiative}　生命抵抗力:${monster.fortitude}（${parseInt(monster.fortitude) + 7}）　精神抵抗力:${monster.willpower}（${parseInt(monster.willpower) + 7}）`,
     sin: monster.soulscars,
-    skills: monster.uniqueskills.map(skill => skill.abilities.map(a => a.description).join(', ')).join('; '),
+    skills: formattedSkills,
     ...statusEntries,
     statusNum: sectionCount,
     taxa: monster.monstertype,
