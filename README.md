@@ -1,4 +1,4 @@
-# SW2.5 Foundry Stat Block Importer
+# SW2.5 Foundry Stat Block Importer for Jean's SW2.5 System
 > Imports monster stat blocks from sw25.nerdsunited.com to Jean's Sword World 2.5 Foundry VTT System
 
 ## Required Foundry VTT Modules
