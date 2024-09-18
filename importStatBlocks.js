@@ -115,6 +115,8 @@ function convertData(inputData) {
     mndResist: monster.willpower,
     vitResist: monster.fortitude,
     lv: monster.level,
+    parts: monster.sections,
+    coreParts: monster.mainsection,
     mobility: monster.movementspeed,
     mode: "save",
     paletteInsertType: "exchange",
