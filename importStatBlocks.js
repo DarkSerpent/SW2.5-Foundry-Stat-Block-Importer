@@ -91,7 +91,7 @@ function convertData(inputData) {
     statusEntries[`status${sectionCount}Evasion`] = style.evasion;
     statusEntries[`status${sectionCount}EvasionFix`] = parseInt(style.evasion) + 7;
     statusEntries[`status${sectionCount}Hp`] = style.hp;
-    statusEntries[`status${sectionCount}Mp`] = style.mp;
+    statusEntries[`status${sectionCount}Mp`] = style.mp === "-" ? "0" : style.mp;
     statusEntries[`status${sectionCount}Style`] = style.style;
   });
 
@@ -140,7 +140,7 @@ function convertData(inputData) {
     type: "m",
     unitStatus: monster.combatstyles.map(style => ({
       [`${style.style}:HP`]: `${style.hp}/${style.hp}`,
-      [`${style.style}:MP`]: style.mp
+      [`${style.style}:MP`]: style.mp === "-" ? "0/0" : style.mp
     })).reduce((acc, curr) => ({ ...acc, ...curr }), {}),
     unitExceptStatus: {
       "HP": sectionCount,
